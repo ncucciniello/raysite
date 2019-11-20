@@ -131,7 +131,6 @@ aside ul a {
     text-decoration: none;
   }
 
-/* -------------- HAMBURGER ICON ----------------------- */
   .burger {
     display: block;
     position: absolute;
@@ -161,7 +160,6 @@ aside ul a {
     transform: rotate(45deg) translate(-8px, -8px) ;
   }
 
-
   aside {
     display: none;
   }
@@ -180,6 +178,10 @@ aside ul a {
     height: 45vw;
     margin: 1.5vw 0;
     border: 1px solid rgb(211,211,211);
+  }
+
+  #modal {
+    position: fixed;
   }
 
   #modal img, #modal video {

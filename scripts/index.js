@@ -76,6 +76,25 @@ function toggleMobileNav() {
   burgerChange();
 }
 
+// CLOSE MOBILE NAV IF OPEN
+function closeMobileNav() {
+  var x = document.getElementById("mobileLinks");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+    burgerChange();
+  }
+}
+
+
+// SET MODAL SIZE ON MOBILE
+function modalSizing() {
+  if (window.innerWidth < 500) {
+    document.querySelector('#modal').style.height = window.innerHeight;
+  }
+}
+
+
+
 
 // EVENT LISTENERS
 for (var i = 0; i < items.length; i++) {
@@ -93,5 +112,9 @@ for (var i = 0; i < mobileButtons.length; i++) {
 document.querySelector('.home').addEventListener('click', returnHome);
 document.querySelector('.name').addEventListener('click', returnHome);
 document.querySelector('.burger').addEventListener('click', toggleMobileNav);
+document.querySelector('.mobileLogo').addEventListener('click', closeMobileNav);
 
 modal.addEventListener("click", closeModal);
+
+// FUNCTIONS RUN ON PAGE LOAD
+modalSizing();
