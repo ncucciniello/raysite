@@ -101,6 +101,7 @@ aside ul a {
 }
 
 /*--------------------------------------------------------------------------------------------------------------------------------*/
+/*MOBILE SIZING*/
 
 @media (max-width: 499px) {
 
@@ -108,26 +109,70 @@ aside ul a {
     display: block;
   }
 
-  #mobileMenu {
-    display: none;
-  }
-
   #mobileNav img {
-    width: 175px;
+    width: 125px;
     padding: 10px 0 10px 10px;
   }
+
+  #mobileLinks {
+    display: none;
+    text-align: center;
+  }
+
+  #mobileNav #mobileLinks div {
+    color: black;
+    padding: 15px 0;
+    font-size: .85em;
+    border: 1px solid rgb(211,211,211);
+    */
+  }
+
+  #mobileLinks a {
+    text-decoration: none;
+  }
+
+/* -------------- HAMBURGER ICON ----------------------- */
+  .burger {
+    display: block;
+    position: absolute;
+    right: 15px;
+    top: 60px;
+  }
+
+  .line1, .line2, .line3 {
+    width: 35px;
+    height: 5px;
+    background-color: #555555;
+    margin: 6px 0;
+    transition: 0.4s;
+  }
+
+  .change .line1 {
+    -webkit-transform: rotate(-45deg) translate(-9px, 6px) ;
+    transform: rotate(-45deg) translate(-9px, 6px) ;
+  }
+
+  .change .line2 {
+    opacity: 0;
+  }
+
+  .change .line3 {
+    -webkit-transform: rotate(45deg) translate(-8px, -8px) ;
+    transform: rotate(45deg) translate(-8px, -8px) ;
+  }
+
 
   aside {
     display: none;
   }
 
   #content {
-    width: 100%;
     margin: 0;
-    display: flex;
+    width: 100%;
     justify-content: space-around;
-    flex-wrap: wrap;
-    /*border: 1px solid orange;*/
+    /*height: 85vh;*/
+    overflow: scroll;
+    /*border: 1px solid green;*/
   }
 
   #content img, #content video {
@@ -137,19 +182,7 @@ aside ul a {
     border: 1px solid rgb(211,211,211);
   }
 
-  #modal {
-    /*top:0;*/
-    /*width: 100vw;*/
-    /*height: 100vh;*/
-    /*display: none;*/
-    /*cursor: pointer;*/
-    /*position: absolute;*/
-    /*text-align: center;*/
-    /*background-color: rgba(1,1,1, .9);*/
-  }
-
   #modal img, #modal video {
-    /*position: absolute;*/
     top: 50%;
     left: 0;
     margin-top: -50%;
@@ -166,72 +199,6 @@ aside ul a {
   and (min-device-width: 414px)
   and (max-device-width: 736px)
   and (-webkit-min-device-pixel-ratio: 3) {
-
-/*    #mobileNav {
-      display: block;
-    }*/
-
-/*    #mobileNav img {
-      float: left;
-      width: 125px;
-      margin: 15px 20px;
-    }*/
-
-/*    #mobileMenu {
-      text-align: center;
-    }*/
-
-/*    #mobileMenu div {
-      font-size: 15px;
-      padding: 15px 0;
-      background-color: white;
-      border: 1px solid rgb(211,211,211);
-    }*/
-
-/*    .hidden {
-      height: 0px;
-      -webkit-transition:height, 0.5s linear;
-      -moz-transition: height, 0.5s linear;
-      -ms-transition: height, 0.5s linear;
-      -o-transition: height, 0.5s linear;
-      transition: height, 0.5s linear;
-    }*/
-/*    .hidden.open {
-      height: 100%;
-      -webkit-transition:height, 0.5s linear;
-      -moz-transition: height, 0.5s linear;
-      -ms-transition: height, 0.5s linear;
-      -o-transition: height, 0.5s linear;
-      transition: height, 0.5s linear;
-    }*/
-
-/*    #mobileMenu a {
-      color: black;
-      text-decoration: none;
-    }*/
-
-/*    #annimation {
-      margin-bottom: 10px;
-    }*/
-
-/*    aside {
-      display: none;
-    }*/
-
-
-/*    #content {
-      width: 100%;
-      float: none;
-      display: flex;
-      justify-content: space-evenly;
-      border: 1px solid orange;
-    }*/
-
-/*    #content img, #content video {
-      margin: 0 0 3px 0;
-      width: 200px;
-      height: 200px;
-    }*/
 
 }
 

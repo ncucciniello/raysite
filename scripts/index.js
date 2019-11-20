@@ -5,6 +5,7 @@ var homeitems = document.querySelectorAll('.homeitem');
 var items = document.querySelectorAll('.item');
 var annimationButton = document.querySelector('#annimation');
 var buttons = document.querySelectorAll('.button');
+var mobileButtons = document.querySelectorAll('.mobileButton');
 
 
 // OPEN MODAL CONTAINGING CLICKED IMAGE
@@ -57,6 +58,25 @@ function returnHome(){
   }
 }
 
+// Hamburger FUNCTION
+function burgerChange() {
+  let burger = document.querySelector('.burger')
+  burger.classList.toggle("change");
+}
+
+// TOGGLE MOBILE NAV BAR
+function toggleMobileNav() {
+  var x = document.getElementById("mobileLinks");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+
+  burgerChange();
+}
+
+
 // EVENT LISTENERS
 for (var i = 0; i < items.length; i++) {
     items[i].addEventListener('click', openModal);
@@ -66,7 +86,12 @@ for (var i = 0; i < buttons.length; i++) {
     buttons[i].addEventListener('click', changeView);
 }
 
+for (var i = 0; i < mobileButtons.length; i++) {
+    mobileButtons[i].addEventListener('click', toggleMobileNav);
+}
+
 document.querySelector('.home').addEventListener('click', returnHome);
 document.querySelector('.name').addEventListener('click', returnHome);
+document.querySelector('.burger').addEventListener('click', toggleMobileNav);
 
 modal.addEventListener("click", closeModal);
