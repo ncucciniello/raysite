@@ -1,13 +1,33 @@
 console.log('js linked');
 
+let homeItems = 6;
+let illustrationItems = 73;
+
 var modal = document.querySelector('#modal');
 var homeitems = document.querySelectorAll('.homeitem');
 var homeButtons = document.querySelectorAll('.home');
-var items = document.querySelectorAll('.item');
+// var items = document.querySelectorAll('.item');
 var annimationButton = document.querySelector('#annimation');
 var buttons = document.querySelectorAll('.button');
 var mobileButtons = document.querySelectorAll('.mobileButton');
 
+
+function populate() {
+
+  i = homeItems;
+
+  while ( i > 0) {
+    // console.log('looped');
+    // console.log(i);
+    let newImg = document.createElement("img");
+    newImg.className = "item";
+    newImg.src = 'assets/home/home' + i + '.jpg';
+    newImg.addEventListener('click', openModal);
+    // console.log(newImg);
+    document.querySelector('#content').appendChild(newImg);
+    i = i - 1;
+  }
+}
 
 // OPEN MODAL CONTAINGING CLICKED IMAGE
 function openModal(e) {
@@ -98,9 +118,9 @@ function modalSizing() {
 
 
 // EVENT LISTENERS
-for (var i = 0; i < items.length; i++) {
-  items[i].addEventListener('click', openModal);
-}
+// for (var i = 0; i < items.length; i++) {
+//   items[i].addEventListener('click', openModal);
+// }
 
 for (var i = 0; i < buttons.length; i++) {
   buttons[i].addEventListener('click', changeView);
@@ -121,3 +141,4 @@ modal.addEventListener("click", closeModal);
 
 // FUNCTIONS RUN ON PAGE LOAD
 modalSizing();
+populate();
