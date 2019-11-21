@@ -2,6 +2,7 @@ console.log('js linked');
 
 var modal = document.querySelector('#modal');
 var homeitems = document.querySelectorAll('.homeitem');
+var homeButtons = document.querySelectorAll('.home');
 var items = document.querySelectorAll('.item');
 var annimationButton = document.querySelector('#annimation');
 var buttons = document.querySelectorAll('.button');
@@ -98,19 +99,21 @@ function modalSizing() {
 
 // EVENT LISTENERS
 for (var i = 0; i < items.length; i++) {
-    items[i].addEventListener('click', openModal);
+  items[i].addEventListener('click', openModal);
 }
 
 for (var i = 0; i < buttons.length; i++) {
-    buttons[i].addEventListener('click', changeView);
+  buttons[i].addEventListener('click', changeView);
 }
 
 for (var i = 0; i < mobileButtons.length; i++) {
-    mobileButtons[i].addEventListener('click', toggleMobileNav);
+  mobileButtons[i].addEventListener('click', toggleMobileNav);
 }
 
-document.querySelector('.home').addEventListener('click', returnHome);
-document.querySelector('.name').addEventListener('click', returnHome);
+for (var i = 0; i < homeButtons.length; i++) {
+  homeButtons[i].addEventListener('click', returnHome);
+}
+
 document.querySelector('.burger').addEventListener('click', toggleMobileNav);
 document.querySelector('.mobileLogo').addEventListener('click', closeMobileNav);
 
