@@ -86,8 +86,7 @@ aside ul a {
   height: 100vh;
   display: none;
   cursor: pointer;
-  position: absolute;
-  /*text-align: center;*/
+  position: fixed;
   background-color: rgba(1,1,1, .9);
 }
 
@@ -178,10 +177,6 @@ aside ul a {
     height: 45vw;
     margin: 1.5vw 0;
     border: 1px solid rgb(211,211,211);
-  }
-
-  #modal {
-    position: fixed;
   }
 
   #modal img, #modal video {

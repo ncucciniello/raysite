@@ -1,32 +1,75 @@
-console.log('js linked');
-
-let homeItems = 6;
-let illustrationItems = 73;
+var animationItems = 8;
+var artItems = 8;
+var clothingItems = 8;
+var homeItems = 6;
+var illustrationItems = 73;
+var paintItems = 73;
 
 var modal = document.querySelector('#modal');
-var homeitems = document.querySelectorAll('.homeitem');
 var homeButtons = document.querySelectorAll('.home');
-// var items = document.querySelectorAll('.item');
 var annimationButton = document.querySelector('#annimation');
 var buttons = document.querySelectorAll('.button');
 var mobileButtons = document.querySelectorAll('.mobileButton');
 
+// Will load home images on page load
+// Then changes images based on catagory clicked
+function populate(selected) {
 
-function populate() {
+  if (selected === undefined) {
+    let selected = 'home';
+    let clicked = selected + 'Items';
+    let i = eval(clicked);
 
-  i = homeItems;
+    while ( i > 0) {
+      let newImg = document.createElement('img');
+      newImg.className = 'item';
+      newImg.src = 'assets/' + selected + '/'  + selected + i + '.jpg';
+      newImg.addEventListener('click', openModal);
+      document.querySelector('#content').appendChild(newImg);
+      i = i - 1;
+    }
+  } else if (selected === 'animation') {
+      let clicked = selected + 'Items';
+      // console.log(clicked);
+      let i = eval(clicked);
 
-  while ( i > 0) {
-    // console.log('looped');
-    // console.log(i);
-    let newImg = document.createElement("img");
-    newImg.className = "item";
-    newImg.src = 'assets/home/home' + i + '.jpg';
-    newImg.addEventListener('click', openModal);
-    // console.log(newImg);
-    document.querySelector('#content').appendChild(newImg);
-    i = i - 1;
+      while ( i > 0) {
+        let newVid = document.createElement('video');
+        newVid.className = 'item';
+        newVid.src = 'assets/' + selected + '/'  + selected + i + '.mp4';
+        newVid.addEventListener('click', openModal);
+        document.querySelector('#content').appendChild(newVid);
+        i = i - 1;
+      }
+    } else {
+        let clicked = selected + 'Items';
+        let i = eval(clicked);
+
+        while ( i > 0) {
+          let newImg = document.createElement('img');
+          newImg.className = 'item';
+          if (clicked === 'clothingItems') {
+            newImg.src = 'assets/' + selected + '/'  + selected + i + '.png';
+          } else {
+            newImg.src = 'assets/' + selected + '/'  + selected + i + '.jpg';
+          }
+          newImg.addEventListener('click', openModal);
+          document.querySelector('#content').appendChild(newImg);
+          i = i - 1;
+        }
+      }
+}
+
+// CHANGE PAGE TO CATAGORY CLICKED
+function changeView(e) {
+  var selected = e.target.id;
+
+  const myNode = document.getElementById('content');
+  while (myNode.firstChild) {
+    myNode.removeChild(myNode.firstChild);
   }
+
+  populate(selected);
 }
 
 // OPEN MODAL CONTAINGING CLICKED IMAGE
@@ -34,15 +77,15 @@ function openModal(e) {
   var source = e.target.src;
 
   if (e.target.nodeName == 'IMG' ) {
-    let elem = document.createElement("img");
+    let elem = document.createElement('img');
     elem.src = source;
-    elem.setAttribute("id", "opened");
+    elem.setAttribute('id', 'opened');
     modal.appendChild(elem);
   } else if (e.target.nodeName == 'VIDEO' ) {
-    let elem = document.createElement("video");
+    let elem = document.createElement('video');
     elem.src = source;
     elem.controls = true;
-    elem.setAttribute("id", "opened");
+    elem.setAttribute('id', 'opened');
     modal.appendChild(elem);
   }
 
@@ -53,19 +96,6 @@ function openModal(e) {
 function closeModal() {
   modal.style.display = 'none';
   document.querySelector('#opened').remove();
-}
-
-// CHANGE PAGE TO CATAGORY CLICKED
-function changeView(e) {
-  var selected = document.querySelectorAll('.' + e.target.id);
-
-  for (var i = 0; i < items.length; i++) {
-    items[i].style.display = 'none';
-  }
-
-  for (var i = 0; i < selected.length; i++) {
-    selected[i].style.display = 'block';
-  }
 }
 
 // RESTORE PAGE TO 'HOME' VIEW
@@ -82,16 +112,16 @@ function returnHome(){
 // Hamburger FUNCTION
 function burgerChange() {
   let burger = document.querySelector('.burger')
-  burger.classList.toggle("change");
+  burger.classList.toggle('change');
 }
 
 // TOGGLE MOBILE NAV BAR
 function toggleMobileNav() {
-  var x = document.getElementById("mobileLinks");
-  if (x.style.display === "block") {
-    x.style.display = "none";
+  var x = document.getElementById('mobileLinks');
+  if (x.style.display === 'block') {
+    x.style.display = 'none';
   } else {
-    x.style.display = "block";
+    x.style.display = 'block';
   }
 
   burgerChange();
@@ -99,9 +129,9 @@ function toggleMobileNav() {
 
 // CLOSE MOBILE NAV IF OPEN
 function closeMobileNav() {
-  var x = document.getElementById("mobileLinks");
-  if (x.style.display === "block") {
-    x.style.display = "none";
+  var x = document.getElementById('mobileLinks');
+  if (x.style.display === 'block') {
+    x.style.display = 'none';
     burgerChange();
   }
 }
@@ -113,14 +143,6 @@ function modalSizing() {
     document.querySelector('#modal').style.height = window.innerHeight;
   }
 }
-
-
-
-
-// EVENT LISTENERS
-// for (var i = 0; i < items.length; i++) {
-//   items[i].addEventListener('click', openModal);
-// }
 
 for (var i = 0; i < buttons.length; i++) {
   buttons[i].addEventListener('click', changeView);
@@ -137,7 +159,7 @@ for (var i = 0; i < homeButtons.length; i++) {
 document.querySelector('.burger').addEventListener('click', toggleMobileNav);
 document.querySelector('.mobileLogo').addEventListener('click', closeMobileNav);
 
-modal.addEventListener("click", closeModal);
+modal.addEventListener('click', closeModal);
 
 // FUNCTIONS RUN ON PAGE LOAD
 modalSizing();
