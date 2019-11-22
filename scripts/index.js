@@ -6,7 +6,6 @@ var illustrationItems = 73;
 var paintItems = 73;
 
 var modal = document.querySelector('#modal');
-var homeButtons = document.querySelectorAll('.home');
 var annimationButton = document.querySelector('#annimation');
 var buttons = document.querySelectorAll('.button');
 var mobileButtons = document.querySelectorAll('.mobileButton');
@@ -64,13 +63,18 @@ function populate(selected) {
 function changeView(e) {
   var selected = e.target.id;
 
-  const myNode = document.getElementById('content');
-  while (myNode.firstChild) {
-    myNode.removeChild(myNode.firstChild);
+  const content = document.getElementById('content');
+  while (content.firstChild) {
+    content.removeChild(content.firstChild);
+  }
+
+  if (selected === 'home') {
+    selected = undefined;
   }
 
   populate(selected);
 }
+
 
 // OPEN MODAL CONTAINGING CLICKED IMAGE
 function openModal(e) {
@@ -96,17 +100,6 @@ function openModal(e) {
 function closeModal() {
   modal.style.display = 'none';
   document.querySelector('#opened').remove();
-}
-
-// RESTORE PAGE TO 'HOME' VIEW
-function returnHome(){
-  for (var i = 0; i < items.length; i++) {
-    items[i].style.display = 'none';
-  }
-
-  for (var i = 0; i < homeitems.length; i++) {
-    homeitems[i].style.display = 'block';
-  }
 }
 
 // Hamburger FUNCTION
@@ -150,10 +143,6 @@ for (var i = 0; i < buttons.length; i++) {
 
 for (var i = 0; i < mobileButtons.length; i++) {
   mobileButtons[i].addEventListener('click', toggleMobileNav);
-}
-
-for (var i = 0; i < homeButtons.length; i++) {
-  homeButtons[i].addEventListener('click', returnHome);
 }
 
 document.querySelector('.burger').addEventListener('click', toggleMobileNav);
